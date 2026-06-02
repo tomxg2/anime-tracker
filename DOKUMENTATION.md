@@ -169,4 +169,3 @@ Diese Trennung macht den Code übersichtlich und testbar.
 
 - Validierung der Eingaben (Rating 1–10) mit Bean Validation.
 - Authentifizierung pro Benutzer.
-- Frontend (z. B. React) zur Visualisierung der Statistiken.

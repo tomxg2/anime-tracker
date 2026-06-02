@@ -632,8 +632,8 @@ body {
 
 /* ── User color mapping ───────────────────────────────────── */
 .avatar-tom   { background: linear-gradient(135deg, #6c63ff, #b44fff); }
-.avatar-mika  { background: linear-gradient(135deg, #ff6584, #ff9a8b); }
-.avatar-alex  { background: linear-gradient(135deg, #43e8d8, #06d6a0); }
+.avatar-marco { background: linear-gradient(135deg, #ff6584, #ff9a8b); }
+.avatar-luigi { background: linear-gradient(135deg, #43e8d8, #06d6a0); }
 </style>
 </head>
 <body>
@@ -689,8 +689,8 @@ body {
         <div class="section-controls" id="user-filters">
           <button class="filter-pill active" onclick="filterWatchlist('all', this)">All</button>
           <button class="filter-pill" onclick="filterWatchlist('tom', this)">tom</button>
-          <button class="filter-pill" onclick="filterWatchlist('mika', this)">mika</button>
-          <button class="filter-pill" onclick="filterWatchlist('alex', this)">alex</button>
+          <button class="filter-pill" onclick="filterWatchlist('marco', this)">marco</button>
+          <button class="filter-pill" onclick="filterWatchlist('luigi', this)">luigi</button>
         </div>
       </div>
       <div class="section-controls" style="margin-bottom:1rem; gap:.5rem; display:flex; flex-wrap:wrap;">
@@ -859,13 +859,18 @@ async function processJikanQueue() {
   const { title, resolve } = jikanQueue.shift();
   try {
     if (state.imageCache.has(title)) { resolve(state.imageCache.get(title)); jikanBusy = false; processJikanQueue(); return; }
-    const r = await fetch(`https://api.jikan.moe/v4/anime?q=${encodeURIComponent(title)}&limit=1`);
-    const j = await r.json();
-    const url = j?.data?.[0]?.images?.jpg?.large_image_url || null;
+    let url = null;
+    for (let attempt = 0; attempt < 3; attempt++) {
+      const r = await fetch(`https://api.jikan.moe/v4/anime?q=${encodeURIComponent(title)}&limit=1`);
+      if (r.status === 429) { await new Promise(res => setTimeout(res, 1200 * (attempt + 1))); continue; }
+      const j = await r.json();
+      url = j?.data?.[0]?.images?.jpg?.large_image_url || null;
+      break;
+    }
     state.imageCache.set(title, url);
     resolve(url);
   } catch { resolve(null); }
-  await new Promise(res => setTimeout(res, 350)); // rate limit
+  await new Promise(res => setTimeout(res, 500)); // stay safely under 3 req/sec
   jikanBusy = false;
   processJikanQueue();
 }

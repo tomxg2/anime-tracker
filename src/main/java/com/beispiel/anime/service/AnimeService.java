@@ -61,6 +61,10 @@ public class AnimeService {
         return animeRepository.findByGenre(genre);
     }
 
+    public List<Anime> findByMinimumEpisodes(int minEpisodes) {
+        return animeRepository.findByMinimumEpisodes(minEpisodes);
+    }
+
     // --- Aggregationen durchreichen ---
 
     public List<StudioCountResult> countPerStudio() {

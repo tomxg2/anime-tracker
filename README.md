@@ -64,6 +64,7 @@ Die App läuft anschliessend auf <http://localhost:8080>.
 | PUT | `/api/anime/{id}` | Anime aktualisieren |
 | DELETE | `/api/anime/{id}` | Anime löschen |
 | GET | `/api/anime/genre/{genre}` | Filter per Genre (`@Query`) |
+| GET | `/api/anime/min-episodes/{min}` | Filter: mind. N Episoden (`@Query`) |
 | GET | `/api/anime/stats/per-studio` | Aggregation: Anzahl pro Studio |
 | GET | `/api/anime/stats/per-genre` | Aggregation: Anzahl pro Genre |
 
@@ -77,6 +78,7 @@ Die App läuft anschliessend auf <http://localhost:8080>.
 | PUT | `/api/entries/{id}` | Eintrag aktualisieren |
 | DELETE | `/api/entries/{id}` | Eintrag löschen |
 | GET | `/api/entries/user/{user}` | Filter per Benutzer (`@Query`) |
+| GET | `/api/entries/filter?status=X&minRating=N` | Filter per Status + Mindestbewertung (`@Query`) |
 | GET | `/api/entries/stats/episodes-per-user` | Aggregation: Episoden pro Benutzer |
 | GET | `/api/entries/stats/per-status` | Aggregation: Anzahl pro Status |
 | GET | `/api/entries/stats/avg-rating-per-user` | Aggregation: Ø-Bewertung pro Benutzer |

@@ -6,6 +6,7 @@ import com.beispiel.anime.dto.TopAnimeResult;
 import com.beispiel.anime.dto.UserEpisodesResult;
 import com.beispiel.anime.dto.UserRatingResult;
 import com.beispiel.anime.model.WatchEntry;
+import com.beispiel.anime.model.WatchStatus;
 import com.beispiel.anime.repository.WatchEntryRepository;
 import org.springframework.stereotype.Service;
 
@@ -58,6 +59,10 @@ public class WatchEntryService {
 
     public List<WatchEntry> findByUser(String user) {
         return watchEntryRepository.findByUser(user);
+    }
+
+    public List<WatchEntry> findByStatusAndMinRating(WatchStatus status, int minRating) {
+        return watchEntryRepository.findByStatusAndMinRating(status, minRating);
     }
 
     // --- Aggregationen durchreichen ---

@@ -72,12 +72,12 @@ public class DataSeeder implements CommandLineRunner {
                 new WatchEntry(steinsGate.getId(), "tom", 9, 24, WatchStatus.COMPLETED),
                 new WatchEntry(aot.getId(), "tom", 8, 60, WatchStatus.WATCHING),
                 new WatchEntry(bebop.getId(), "tom", 7, 0, WatchStatus.PLAN_TO_WATCH),
-                new WatchEntry(fmab.getId(), "mika", 10, 64, WatchStatus.COMPLETED),
-                new WatchEntry(deathNote.getId(), "mika", 7, 37, WatchStatus.COMPLETED),
-                new WatchEntry(bebop.getId(), "mika", 9, 26, WatchStatus.COMPLETED),
-                new WatchEntry(evangelion.getId(), "alex", 9, 26, WatchStatus.COMPLETED),
-                new WatchEntry(aot.getId(), "alex", 8, 87, WatchStatus.COMPLETED),
-                new WatchEntry(steinsGate.getId(), "alex", 8, 10, WatchStatus.DROPPED)
+                new WatchEntry(fmab.getId(), "marco", 10, 64, WatchStatus.COMPLETED),
+                new WatchEntry(deathNote.getId(), "marco", 7, 37, WatchStatus.COMPLETED),
+                new WatchEntry(bebop.getId(), "marco", 9, 26, WatchStatus.COMPLETED),
+                new WatchEntry(evangelion.getId(), "luigi", 9, 26, WatchStatus.COMPLETED),
+                new WatchEntry(aot.getId(), "luigi", 8, 87, WatchStatus.COMPLETED),
+                new WatchEntry(steinsGate.getId(), "luigi", 8, 10, WatchStatus.DROPPED)
         ));
 
         System.out.println(">> Testdaten geladen: "

@@ -6,6 +6,7 @@ import com.beispiel.anime.dto.TopAnimeResult;
 import com.beispiel.anime.dto.UserEpisodesResult;
 import com.beispiel.anime.dto.UserRatingResult;
 import com.beispiel.anime.model.WatchEntry;
+import com.beispiel.anime.model.WatchStatus;
 import com.beispiel.anime.service.WatchEntryService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -75,6 +76,14 @@ public class WatchEntryController {
     @GetMapping("/user/{user}")
     public List<WatchEntry> getByUser(@PathVariable String user) {
         return watchEntryService.findByUser(user);
+    }
+
+    /** GET /api/entries/filter?status=COMPLETED&minRating=8 - Filter ueber @Query-Methode. */
+    @GetMapping("/filter")
+    public List<WatchEntry> getByStatusAndMinRating(
+            @org.springframework.web.bind.annotation.RequestParam WatchStatus status,
+            @org.springframework.web.bind.annotation.RequestParam int minRating) {
+        return watchEntryService.findByStatusAndMinRating(status, minRating);
     }
 
     // ---------------- Aggregationen ----------------

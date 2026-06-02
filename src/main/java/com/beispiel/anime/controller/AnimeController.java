@@ -74,6 +74,12 @@ public class AnimeController {
         return animeService.findByGenre(genre);
     }
 
+    /** GET /api/anime/min-episodes/{min} - Filter ueber @Query-Methode. */
+    @GetMapping("/min-episodes/{min}")
+    public List<Anime> getByMinEpisodes(@PathVariable int min) {
+        return animeService.findByMinimumEpisodes(min);
+    }
+
     /** GET /api/anime/stats/per-studio - Aggregation: Anzahl pro Studio. */
     @GetMapping("/stats/per-studio")
     public List<StudioCountResult> countPerStudio() {
