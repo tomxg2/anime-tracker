@@ -11,7 +11,7 @@ einer Anime-Watchlist mit Bewertungen und Statistik-Aggregationen.
 |------|---------|
 | Java JDK | 17 oder neuer |
 | Maven | 3.6+ (oder die IDE-integrierte Variante) |
-| MongoDB | lokal laufend auf `localhost:27017` |
+| MongoDB | lokal laufend auf `localhost:8080` |
 
 MongoDB starten (Beispiel):
 
